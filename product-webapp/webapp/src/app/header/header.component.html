@@ -1,0 +1,32 @@
+<div class="header">
+  <mat-toolbar color="primary" class="mat-elevation-z8">
+    <button routerLink="" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Parkwavez</span>
+    <span class="example-spacer"></span>
+    <button routerLink="" mat-button>Home</button>
+    <button routerLink="review" mat-button>Review</button>
+    <button routerLink="contact" mat-button>Contact</button>
+    <button routerLink="register" *ngIf="!userData" mat-button>Sign Up</button>
+    <button
+      routerLink="login"
+      *ngIf="!userData"
+      mat-raised-button
+      color="accent"
+    >
+      Login
+    </button>
+    <button routerLink="/bookingList" *ngIf="userData" mat-button>
+      Booking List
+    </button>
+    <button
+      (click)="logout()"
+      *ngIf="userData"
+      mat-raised-button
+      color="accent"
+    >
+      Logout
+    </button>
+  </mat-toolbar>
+</div>

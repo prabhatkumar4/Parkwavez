@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular/core": "^16.2.6",
+    "bootstrap": "^5.3.2",
+    "ng2-search-filter": "^0.5.1"
+  }
+}

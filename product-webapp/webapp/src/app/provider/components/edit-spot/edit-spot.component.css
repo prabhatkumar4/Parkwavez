@@ -1,0 +1,21 @@
+.edit-spot-form{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+mat-chip-option{
+    width: 45%;
+}
+mat-chip-listbox{
+    margin-bottom: 20px;
+}
+.full-width{
+    width: 100%;
+}
+.event{
+   width: 90%;
+   margin-left: 5%;
+   display: flex;
+   justify-content: space-between;
+}

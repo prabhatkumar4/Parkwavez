@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <br>
+            <div class="card">
+                <h5 class="card-header center text-primary">Parkwavez Customer Support</h5>
+                <div class="card-body">
+                    <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <div class="frame-box">
+                                    <div *ngFor="let item of chatConversation">
+                                        <p class="card-text padding" [ngClass]="item.cssClass">
+                                            {{item.person}} :  {{getText(item.response)}}                                                                                                            
+                                        </p>
+                                        
+                                    </div>
+                                    <div><img class="spinner-img" src="../../assets/spinner.gif" *ngIf="showSpinner"></div>
+                                    
+                                </div>
+                                <br>
+                                    <textarea row="1" cols="5" id="text-area" class="form-control" [(ngModel)]="promptText" placeholder="Start by asking what you are looking for"></textarea>
+                                    <br>
+                                        <button class="btn btn-primary push-right" (click)="checkResponse()">Send</button>
+                                    </div>
+                                    <div class="col-md-1">
+                                      
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            

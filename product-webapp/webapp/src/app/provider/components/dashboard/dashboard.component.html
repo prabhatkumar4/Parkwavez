@@ -1,0 +1,17 @@
+<div class="container">
+  <div>
+    <h1 class="heading">Parking Areas</h1>
+    <button mat-raised-button routerLink="add">Add Parking Area</button>
+  </div>
+  <div class="parkingAreaList">
+     <mat-error *ngIf="error"
+        >{{error}}</mat-error
+      >
+    <app-parking-area
+      *ngFor="let parkingArea of parkingAreas"
+      [parkingArea]="parkingArea"
+      (deleteParkingArea)="deleteParkingArea($event)"
+    ></app-parking-area>
+
+  </div>
+</div>

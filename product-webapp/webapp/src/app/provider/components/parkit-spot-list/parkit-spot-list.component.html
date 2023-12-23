@@ -1,0 +1,70 @@
+<h2 class="header">Parking Spots</h2>
+<mat-card>
+  <mat-card-header>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Add Parking Spot </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Spot Type</mat-label>
+            <mat-select [(value)]="spotType" required>
+              <mat-option *ngFor="let spotType of spotTypes" [value]="spotType">
+                {{ spotType }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="addParkingSpots()">
+            Add Spot
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-error *ngIf="error">{{ error }}</mat-error>
+
+    <div class="spot-list">
+      <div class="spot-list-header">
+        <mat-form-field>
+          <mat-label>Filter By</mat-label>
+          <mat-select [(value)]="filterField" (valueChange)="filterEvent()">
+            <mat-option
+              *ngFor="let filterOption of filterOptions"
+              [value]="filterOption"
+            >
+              {{ filterOption == null ? "clear" : filterOption }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Sort By</mat-label>
+          <mat-select [(value)]="sortField" (valueChange)="sortEvent()">
+            <mat-option
+              *ngFor="let sortOption of sortOptions"
+              [value]="sortOption.value"
+              >{{ sortOption.key }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="spot-list-content">
+        <mat-card
+          class="example-card"
+          *ngFor="let parkingSpot of filteredParkingSpots"
+          [ngClass]="parkingSpot.occupied ? 'occupied' : 'not-occupied'"
+          (click)="openDrawer(parkingSpot)"
+        >
+          <mat-card-header>
+            <mat-card-title>{{ parkingSpot.parkingSpotNumber }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ parkingSpot.spotType }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

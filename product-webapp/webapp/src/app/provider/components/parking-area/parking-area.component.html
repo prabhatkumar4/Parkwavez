@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ parkingArea.parkingName }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <mat-icon>location_on</mat-icon> Address:
+      {{ parkingArea.address.street }}, {{ parkingArea.address.city }}
+    </p>
+    <p>
+      <mat-icon>dns</mat-icon> Total Number of Spots:
+      {{ parkingArea.totalNoSpot }}
+    </p>
+    <p>
+      <mat-icon>location_searching</mat-icon> Location: Lat:
+      {{ parkingArea.address.location.lat }}, Lon:
+      {{ parkingArea.address.location.lon }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="onDelete(parkingArea.areaId)"
+    >
+      Delete
+    </button>
+    <button mat-raised-button (click)="onNavigate(parkingArea)">
+      <i class="fa-solid fa-angle-right"></i>
+    </button>
+  </mat-card-actions>
+</mat-card>

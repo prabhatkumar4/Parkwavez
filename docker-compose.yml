@@ -1,0 +1,238 @@
+services:
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.1.0
+    ports:
+      - "3307:3306"
+    volumes:
+      - /usr/local/mysql:/parkwavez
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      parkwavez-net:
+
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - /usr/local/mongodb:/parkwavez
+    networks:
+      parkwavez-net:
+
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      parkwavez-net:
+
+
+  kafka:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: kafka
+    restart: always
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+    networks:
+      parkwavez-net:
+
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      parkwavez-net:
+
+
+  api-gateway:
+    container_name: api-gateway
+    build: api-gateway/
+    restart: always
+    ports:
+      - "8004:8004"
+    depends_on:
+      - eureka-server
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+  bot-service:
+    container_name: bot-service
+    build: custom-bot-service/
+    restart: always
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+  eureka-server:
+    container_name: eureka-server
+    build: eureka-server/
+    restart: always
+    ports:
+      - "8761:8761"
+    networks:
+      parkwavez-net:
+
+
+  notification-service:
+    container_name: notification-service
+    build: notification-service/
+    restart: always
+    ports:
+      - "8084:8084"
+    depends_on:
+      - mongodb
+      - kafka
+      - eureka-server
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+  parking-provider-service:
+    container_name: parking-provider-service
+    build: parking-provider-service/
+    restart: always
+    ports:
+      - "8085:8085"
+    environment:
+      - spring.profiles.active=docker
+    links:
+      - elasticsearch
+    depends_on:
+      - eureka-server
+      - elasticsearch
+      - api-gateway
+      - kafka
+    networks:
+      parkwavez-net:
+
+
+  parking-space-booking:
+    container_name: parking-space-booking
+    build: parking-space-booking/
+    restart: always
+    ports:
+      - "8086:8086"
+    depends_on:
+      - mongodb
+      - kafka
+      - eureka-server
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+  payment-service:
+    container_name: payment-service
+    build: payment-service/
+    restart: always
+    ports:
+      - "8087:8087"
+    depends_on:
+      - mysql
+      - eureka-server
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+  product-webapp:
+    container_name: product-webapp
+    build: product-webapp/
+    restart: always
+    ports:
+      - "8099:8099"
+    depends_on:
+      - eureka-server
+      - api-gateway
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+  review-service:
+    container_name: review-service
+    build: review-service/
+    restart: always
+    ports:
+      - "8089:8089"
+    depends_on:
+      - mongodb
+      - kafka
+      - eureka-server
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+  user-authentication-service:
+    container_name: user-authentication-service
+    build: user-authentication-management/
+    restart: always
+    ports:
+      - "8090:8090"
+    depends_on:
+      - mysql
+      - eureka-server
+      - kafka
+    environment:
+      - spring.profiles.active=docker
+    networks:
+      parkwavez-net:
+
+
+volumes:
+  esdata1:
+    driver: local
+
+networks:
+  parkwavez-net:

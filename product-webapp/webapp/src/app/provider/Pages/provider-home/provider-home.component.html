@@ -1,0 +1,36 @@
+<button
+  class="sideNavButton"
+  (click)="openToggle()"
+  [ngClass]="open == true ? 'open' : 'close'"
+>
+  <mat-icon *ngIf="open">keyboard_arrow_left</mat-icon>
+  <mat-icon *ngIf="!open">keyboard_arrow_right</mat-icon>
+</button>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer
+    [mode]="isSmallScreen == true ? 'over' : 'side'"
+    [opened]="open"
+    class="drawer"
+    [style]="'backgroundColor:primary'"
+  >
+    <mat-toolbar color="primary">
+      <mat-toolbar-row routerLink="/provider">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </mat-toolbar-row>
+      <mat-toolbar-row routerLink="profile">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+        <mat-icon></mat-icon>
+      </mat-toolbar-row>
+      <!-- <mat-toolbar-row (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+        <mat-icon></mat-icon>
+      </mat-toolbar-row> -->
+    </mat-toolbar>
+  </mat-drawer>
+  <mat-drawer-content class="main-content">
+    <router-outlet></router-outlet> </mat-drawer-content
+></mat-drawer-container>

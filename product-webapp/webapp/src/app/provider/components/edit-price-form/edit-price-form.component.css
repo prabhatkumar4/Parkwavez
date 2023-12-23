@@ -1,0 +1,12 @@
+.mat-dialog{
+    width: 340px;
+    padding: 10px;
+}
+.mat-dialog-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.full-width-button{
+width: 100%;
+}

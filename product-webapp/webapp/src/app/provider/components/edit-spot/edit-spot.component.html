@@ -1,0 +1,46 @@
+<div>
+  <h1 mat-dialog-title>Edit Spot Form</h1>
+  <div mat-dialog-content>
+    <mat-error *ngIf="error">{{ error }}</mat-error>
+    <form [formGroup]="spotForm" (ngSubmit)="onUpdate()" class="edit-spot-form">
+      <mat-form-field class="full-width">
+        <mat-label>Parking Spot Number</mat-label>
+        <input matInput [value]="data.parkingSpot.parkingSpotNumber" disabled />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Spot Type</mat-label>
+        <mat-select formControlName="spotType" required>
+          <mat-option *ngFor="let spotType of spotTypes" [value]="spotType">
+            {{ spotType }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="spotForm.get('spotType')?.hasError('required')"
+          >Spot Type is required</mat-error
+        >
+      </mat-form-field>
+      <mat-chip-listbox class="full-width" formControlName="occupied">
+        <mat-chip-option [value]="true">Occupied</mat-chip-option>
+        <mat-chip-option [value]="false">Not Occupied</mat-chip-option>
+      </mat-chip-listbox>
+        <button
+          mat-raised-button
+          class="full-width"
+          type="submit"
+          color="primary"
+          [disabled]="!spotForm.valid"
+        >
+          Save
+        </button>
+    </form>
+  </div>
+  <div mat-dialog-actions class="event">
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="onDelete()"
+    >
+      Delete
+    </button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+  </div>
+</div>

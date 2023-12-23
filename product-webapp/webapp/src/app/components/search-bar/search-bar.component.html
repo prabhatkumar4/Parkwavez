@@ -1,0 +1,57 @@
+
+
+<div class = "search-bar-container">
+  <mat-form-field class="example-full-width1">
+      <mat-label>Search Parking Areas</mat-label>
+      <input matInput [(ngModel)]="searchText" (input)="onInputChange()" placeholder="Enter a location or area">
+      <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+ 
+
+
+    
+  <mat-form-field class="example-full-width2">
+    <mat-label>City</mat-label>
+      <input matInput [(ngModel)]="city" placeholder="Enter a city" required>
+  </mat-form-field>
+</div>
+
+<div class="searchButton">
+<button mat-raised-button (click)="search()">Search</button>
+</div>
+
+<div class="nearby">
+  <h2> Or you can click below to get Parking Areas based on your current location</h2>
+<button mat-raised-button (click)="clicked()">Search Nearby location</button>
+</div>
+
+  <div class="wrapper" *ngIf="appear">
+    <i (click)="scrollLeft($event)" class="fa-solid fa-angle-left"></i>
+    <div class="carousel" #carousel>
+
+    
+
+      <div class="card" *ngFor="let parkingArea of parkingAreas |filter:searchText">
+        <h3>{{ parkingArea.parkingName }}</h3>
+        <p>
+          <mat-icon>location_on</mat-icon> Address:
+        {{ parkingArea.address.street }}
+        {{ parkingArea.address.city }}
+        {{ parkingArea.address.state }}
+        <!-- <h3>{{parkingArea.providerId}}</h3> -->
+        </p>
+        <p>
+          <mat-icon>dns</mat-icon> Total Number of Spots:
+      {{ parkingArea.totalNoSpot }} 
+        </p>
+      <div class="area-card-buttons">
+        <button (click)="showProductDetails(parkingArea)" class="button-see-review">Book Spot</button>
+        <button (click)="navigate(parkingArea.providerId)" class="button-see-review">See Review</button>
+      </div>
+      </div>
+    <!--</div>-->
+  </div>
+    <i (click)="scrollRight($event)" class="fa-solid fa-angle-right"></i>
+  </div>

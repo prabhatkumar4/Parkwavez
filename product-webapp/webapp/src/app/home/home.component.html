@@ -1,0 +1,52 @@
+<div class="home">
+
+  <div>
+    <a href="" routerLink="support"><button class="btn btn-primary chat-icon" data-tooltip="Chat with our custom chatbot"></button></a>
+  </div>
+
+  <div class="appname">
+    <h1 class="h1El">
+      Parkwavez.com
+    </h1>
+  </div>
+
+  <h1 class="h1El">This is home page of Parkwavez application</h1>
+
+  <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+ 
+  <app-area-card></app-area-card>
+  
+
+
+
+<!-- parkwavez.com -->
+<div class="contentDiv">
+  <span id="imageDiv">
+      <img src="https://i.ibb.co/sRWk2s1/img-app-ad.png" alt="img-app-ad"/>
+  </span>
+  <span id="textDiv">
+    <h1>FIND PARKING NEAR YOU</h1>
+    <p>The Parkwavez.com web app makes your on-the-go parking experience that much simpler.
+      Find the best parking spot near your destination in convenient and safe parking garages and lots across the India.
+    </p>
+    <h1>Features of the  Parkwavez.com App:</h1>
+    <h3>&#x2713; &nbsp; You can search parking area by location</h3>
+    <h3>&#x2713; &nbsp;  You can book the parking slot with easy payment methods</h3>
+    <h3>&#x2713; &nbsp; You can give ratings and review of the booking</h3>
+    <h3>&#x2713; &nbsp; You will Receive G-mail alerts</h3>
+  </span>
+</div>
+
+
+
+
+<!-- added corousel to home page -->
+<div class="corousel">
+  <app-carousel [images]="images"
+    [autoSlide]="true"
+  ></app-carousel>
+</div>
+
+
+</div>
+

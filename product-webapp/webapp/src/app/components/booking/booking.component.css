@@ -1,0 +1,78 @@
+.marginEl{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.bookingContainer{
+  padding: 4% 30%;
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Add this CSS code to your stylesheet */
+.wide-input-field {
+  width: 100%; /* Adjust the width as needed, e.g., 100% for full width */
+}
+
+
+
+
+.mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+
+
+
+
+  /* Style the title */
+  mat-dialog.title h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+
+
+  mat-form-field {
+    width: 35%; /* Adjust the width as needed */
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+    align-items: center; /* Center-align items horizontally */
+    text-align: center; /* Center-align text within the input field */
+  }
+
+  /* Style the buttons */
+  .mat-dialog-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  #canclebtn {
+    margin-right: 16px;
+  }
+
+  #submitbtn {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  /* Style the entire dialog */
+  .mat-dialog-container {
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+

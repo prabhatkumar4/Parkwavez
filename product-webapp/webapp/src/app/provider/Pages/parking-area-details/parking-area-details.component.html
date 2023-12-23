@@ -1,0 +1,154 @@
+<div class="price-list">
+  <h1 class="header">Parking Area</h1>
+</div>
+<mat-spinner *ngIf="loading"></mat-spinner>
+
+<div class="parking-area" *ngIf="!loading">
+  <mat-card *ngIf="!editingEnabled">
+    <mat-card-header>
+      <mat-card-title>{{ parkingArea.parkingName }}</mat-card-title>
+      <mat-card-subtitle>{{ parkingArea.areaId }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <mat-icon>location_on</mat-icon> Address:
+        {{ parkingArea.address.street }}, {{ parkingArea.address.city }}
+      </p>
+      <p>
+        <mat-icon>dns</mat-icon> Total Number of Spots:
+        {{ parkingArea.totalNoSpot }}
+      </p>
+      <p>
+        <mat-icon>business</mat-icon> Provider ID: {{ parkingArea.providerId }}
+      </p>
+      <p>
+        <mat-icon>location_searching</mat-icon> Location: Lat:
+        {{ parkingArea.address.location.lat }}, Lon:
+        {{ parkingArea.address.location.lon }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="toggleEditing()">
+        Edit
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="editingEnabled">
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Parking Area Name</mat-label>
+        <input
+          matInput
+          name="parkingName"
+          [(ngModel)]="parkingArea.parkingName"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Parking Area Capacity</mat-label>
+        <input
+          matInput
+          type="number"
+          name="totalNoSpot"
+          [(ngModel)]="parkingArea.totalNoSpot"
+          required
+        />
+      </mat-form-field>
+
+      <div>
+        <h3>Address</h3>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Street</mat-label>
+          <input
+            matInput
+            name="street"
+            [(ngModel)]="parkingArea.address.street"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>City</mat-label>
+          <input
+            matInput
+            name="city"
+            [(ngModel)]="parkingArea.address.city"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>State</mat-label>
+          <input
+            matInput
+            name="state"
+            [(ngModel)]="parkingArea.address.state"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Zip Code</mat-label>
+          <input
+            matInput
+            name="zip"
+            [(ngModel)]="parkingArea.address.zip"
+            required
+          />
+        </mat-form-field>
+
+        <div>
+          <h4>Location</h4>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Latitude</mat-label>
+            <input
+              matInput
+              type="number"
+              name="lat"
+              [(ngModel)]="parkingArea.address.location.lat"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Longitude</mat-label>
+            <input
+              matInput
+              type="number"
+              name="lon"
+              [(ngModel)]="parkingArea.address.location.lon"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="toggleEditing()">
+        Cancel
+      </button>
+      <button mat-raised-button color="primary" (click)="OnUpdate()">
+        Save
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <app-parkit-spot-list
+    *ngIf="parkingArea && parkingArea.areaId"
+    [areaId]="parkingArea.areaId"
+  >
+  </app-parkit-spot-list>
+  <app-price
+    *ngIf="parkingArea && parkingArea.areaId"
+    [areaId]="parkingArea.areaId"
+  ></app-price>
+  <div>
+    <h3>Revenue Section</h3>
+  </div>
+  <div>
+    <h3>Review Section</h3>
+  </div>
+</div>

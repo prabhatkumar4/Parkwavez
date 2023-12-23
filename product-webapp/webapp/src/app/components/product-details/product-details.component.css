@@ -1,0 +1,76 @@
+
+  .sticky {
+
+    display: flex;
+    align-items: center;
+      position: sticky;
+      top: 0;
+       background-color: white; /* Add a background color if needed */
+      z-index: 1; /* Ensure it's above the table */
+    }
+    
+    /* Adjust the spacing if needed */
+    /* #filters {
+      padding: 0px;
+    } */
+  
+    #filters {
+      background-color: #f5f5f5;
+      padding: 0px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+  
+    .mat-form-field {
+      margin-right: 16px;
+      min-width: 180px; /* Adjust as needed */
+    }
+  
+    button.mat-raised-button {
+      margin-right: 8px;
+    }
+  
+    /* .parkingSpotList {
+      margin-top: 16px;
+    } */
+    
+    .mat-table {
+      width: 100%;
+    }
+  
+    #date-selection {
+      padding: 0px;
+    }
+  
+    .parkingSpotList {
+      display: flex;
+    }
+    
+  
+    /* button.mat-raised-button[color="primary"] {
+      background-color: #55ff00;
+      color: white;
+    } */
+  
+    /* Media query for screens with a maximum width of 600px */
+  @media screen and (max-width: 600px) {
+    #filters {
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  
+    #date-selection {
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  }
+
+  .sticky h1 {
+    text-align: center;
+    /* text-transform: uppercase; */
+    /* font-weight: bold; */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  }

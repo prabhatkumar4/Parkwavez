@@ -1,0 +1,108 @@
+.h1El{
+  color: pink;
+  text-align: center;
+}
+
+.home{
+  background-image: url('https://i.ibb.co/qgWD33P/background-For-Contact.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding-bottom: 50px;
+}
+
+.card{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid blue;
+  text-align: center;
+}
+.appname{
+  text-align: center;
+  margin-top: 55px;
+  text-align: center;
+}
+.mat-class{
+  color: black;
+}
+.corousel{
+  margin-top: 40px;
+  text-align: center;
+}
+
+
+.contentDiv {
+  display: flex;
+  align-items: center;
+  margin-left: 12.5%;
+  margin-right: 14.5%;
+}
+
+#imageDiv{
+  flex: 1; /* Make the image div take up available horizontal space */
+  padding: 10px; /* Add some spacing around the image */
+}
+
+#textDiv {
+  flex: 2; /* Make the text div take up twice the horizontal space as the image div */
+  padding: 10px; /* Add some spacing around the text */
+}
+
+#textDiv {
+  flex: 2; /* Make the text div take up twice the horizontal space as the image div */
+  padding: 10px; /* Add some spacing around the text */
+}
+
+/* Adjustments for better styling */
+#textDiv h1 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#textDiv p {
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 11px;
+}
+
+.chat-icon {
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image: url('https://assets-v2.lottiefiles.com/a/4bf1141e-1167-11ee-8a8b-d7fba4b8c5e1/LbKxL7PDpt.gif');
+  background-size: cover;
+  margin-left: 90%;
+  position: relative;
+}
+
+.chat-icon::before, .chat-icon::after {
+  --scale: 0;
+  position: absolute;
+  top: -.25rem;
+  left: 50px;
+  transform: translateX(-140%) translateY(30%) scale(var(--scale));
+  transition: 150ms transform;
+  transform-origin: right center;
+}
+
+.chat-icon::before {
+  content: attr(data-tooltip);
+  color: white;
+  padding: .5rem;
+  width: max-content;
+  max-width: 300%;
+  text-align: center;
+  background: #333;
+}
+
+.chat-icon:hover::before, .chat-icon:hover::after {
+  --scale: 1;
+}
+
+

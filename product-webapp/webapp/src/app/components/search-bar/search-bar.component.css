@@ -1,0 +1,191 @@
+
+
+.search-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+
+  padding: 20px;
+  padding-bottom: 30px;
+}
+
+.searchButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-full-width1 {
+  width: 45%;
+ 
+  margin-top: 20px;
+
+  border-radius: 50px;
+}
+
+.example-full-width2 {
+  width: 10%;
+
+  margin-top: 20px;
+
+  border-radius: 50px;
+}
+
+.wrapper {
+    max-width: 1100px;
+    width: 100%;
+    margin: 20px auto;
+    position: relative;
+  }
+  .wrapper i{
+      width: 50px;
+      height: 50px;
+      background-color: #f4f4f4;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      font-size: 1.25rem;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.23);
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  .wrapper i:first-child{
+  left:-22px
+  }
+  .wrapper i:last-child{
+  right:-22px
+  }
+  .carousel{
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 32%;
+      gap: 16px;
+      overflow: hidden;
+      scroll-behavior: smooth;
+  }
+
+  @media screen and (max-width:900px) {
+      .carousel{
+      grid-auto-columns: 50%;
+  }
+  }
+  @media screen and (max-width:600px) {
+      .carousel{
+      grid-auto-columns: 100%;
+  }
+  }
+
+  .card {
+    flex: 0 0 300px; /* Set a fixed width for each card */
+    padding: 16px; /* 20px */
+    /* margin-right: 20px;  */
+    background-color: #fff; /* White background */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* cursor: pointer; */
+    transition: transform 0.3s; /* Add a smooth hover effect */
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+  }
+ 
+
+   .card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  } 
+
+  
+  .card h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+
+/* Style the "See Review" button */
+.button-see-review {
+  background-color: #007bff; /* Change the background color */
+  color: #fff; /* Change the text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Style the button on hover */
+.button-see-review:hover {
+  background-color: #0056b3; /* Change the background color on hover */
+}
+
+
+.mat-icon {
+  vertical-align: middle;
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+.nearby{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:20px;
+}
+
+.nearby h2{
+  color: #00BFFF;; 
+}
+
+.nearby {
+  margin: 5px; /* Add margin for spacing */
+  text-align: center; /* Center-align text */
+}
+
+
+.nearby h2 {
+font-size: 24px; /* Increase font size */
+margin: 10px 0; /* Adjust top and bottom margin */
+}
+
+.nearby button {
+margin-top: 10px; /* Add spacing between the text and the button */
+background-color: aqua; /* Button background color */
+color: white; /* Button text color */
+border: none; /* Remove button border */
+border-radius: 4px; /* Rounded button corners */
+padding: 10px 20px; /* Padding for button */
+cursor: pointer; /* Change cursor on hover */
+transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.nearby button:hover {
+background-color: lightgray; 
+}
+
+.area-card-buttons{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  gap: 15px;
+  align-items: center;
+  padding-left: 25px;
+  /* justify-content: center; */
+}
+

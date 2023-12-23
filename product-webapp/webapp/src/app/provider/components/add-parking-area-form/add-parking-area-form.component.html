@@ -1,0 +1,67 @@
+<div class="container">
+  <form [formGroup]="parkingAreaForm" (ngSubmit)="addParkingArea()">
+    <mat-card>
+      <mat-card-header>
+        <h1>Parking Area Form</h1>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Parking Area Name</mat-label>
+          <input matInput formControlName="parkingName" required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Parking Area Capacity</mat-label>
+          <input
+            matInput
+            type="number"
+            required
+            formControlName="totalNoSpot"
+          />
+        </mat-form-field>
+
+        <div formGroupName="address">
+          <h3>Address</h3>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Street</mat-label>
+            <input matInput required formControlName="street" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput required formControlName="city" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>State</mat-label>
+            <input matInput required formControlName="state" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Zip Code</mat-label>
+            <input matInput required formControlName="zip" />
+          </mat-form-field>
+
+          <div formGroupName="location">
+            <h4>Location</h4>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Latitude</mat-label>
+              <input matInput type="number" required formControlName="lat" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Longitude</mat-label>
+              <input matInput type="number" required formControlName="lon" />
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

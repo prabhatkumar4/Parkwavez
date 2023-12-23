@@ -1,0 +1,32 @@
+<div class="review-form">
+  <h2>Submit Your Review</h2>
+  <form>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Booking ID" [(ngModel)]="bookingId" name="bookingId" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Provider ID" [(ngModel)]="providerId" name="providerId" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="User ID" [(ngModel)]="userId" name="userId" required>
+    </mat-form-field>
+
+    <div class="ratingDiv">
+      <p>Give Us Ratings</p>
+      <ngx-star-rating [(ngModel)]="rating" [id]="'rating'"></ngx-star-rating>
+    </div>
+
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Review Description" [(ngModel)]="reviewDesc" name="reviewDescription" required></textarea>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="warn" (click)="cancelReview()" class="cancel-button">Cancel</button>
+      <button mat-raised-button color="primary" (click)="submitReview(); submitClose()">Submit</button>
+    </div>
+
+  </form>
+</div>

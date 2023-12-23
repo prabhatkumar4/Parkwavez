@@ -1,0 +1,21 @@
+<!-- image-upload.component.html -->
+<div class="container">
+  <h2>Profile Image</h2>
+  <div class="prifile-image" *ngIf="data.provider">
+    <img [src]="data.provider.image" alt="Profile image" />
+  </div>
+  <form (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Select an image</mat-label>
+      <input
+        matInput
+        type="file"
+        (change)="onFileSelected($event)"
+        #fileInput
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">
+      {{data.provider.image==null?"Upload":"Update"}}
+    </button>
+  </form>
+</div>
